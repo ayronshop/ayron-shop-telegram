@@ -24,7 +24,7 @@ const server = http.createServer(async (req, res) => {
     return res.end();
   }
 
-  if (req.method === "GET" && req.url === "/health") {
+ if (req.method === "GET" && req.url.split("?")[0].replace(/\/+$/, "") === "/health") {
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify({ ok: true }));
   }
